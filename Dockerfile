@@ -1,7 +1,14 @@
 FROM python:3.12-slim
 
-# system packages install karo (git + dependencies)
-RUN apt-get update && apt-get install -y --no-install-recommends git \
+# install system dependencies for Pillow + tgcrypto + git
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    git \
+    gcc \
+    build-essential \
+    libjpeg-dev \
+    zlib1g-dev \
+    libfreetype6-dev \
+    libssl-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
